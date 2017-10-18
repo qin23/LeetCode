@@ -1,0 +1,22 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int valley = prices[0];
+        int peak = prices[0];
+        int maxProfit = 0;
+        int i = 0;
+        
+        while(i < prices.length - 1){
+            while(prices[i] < prices[i+1]){
+                valley = prices[i];
+                peak = prices[i+1];
+                maxProfit = maxProfit + peak - valley;
+                i++;
+            }
+            while(prices[i] >= prices[i+1]){
+                i++;
+            }
+        }
+        return maxProfit;
+    }
+}
